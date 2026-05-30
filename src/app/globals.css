@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sans);
+}
+
+:root {
+  --background: #040712;
+  --foreground: #f3f4f6;
+}
+
+/*
+  PERMANENT COMPOSITOR FIX
+  ========================
+  backdrop-filter can ONLY blur content on the document's BASE compositor layer.
+  A sibling position:fixed div — even without transform/will-change — can be
+  promoted to its own layer by Chrome's heuristics (e.g. overlapping z-indexes,
+  stacking context adjacency). The body's background-image is GUARANTEED to be
+  on the base layer. This is the only 100% reliable approach.
+
+  We animate background-position (a paint property, not compositor) so
+  the body itself never gets promoted to its own compositor layer.
+*/
+body {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Ambient radial glow — CSS gradient, zero compositor cost */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 700px 500px at 50% 45%, rgba(0, 242, 254, 0.032) 0%, transparent 70%);
+  z-index: -5;
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #111827;
+  border-radius: 4px;
+  border: 2px solid #000000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1f2937;
+}
+
+/* CSS-Based Global 20px Dot-Matrix Grid Pattern */
+.bg-dot-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.03;
+  z-index: 0;
+}
+
+/* Active Focus Precision Protocol Utility */
+.focus-cyan {
+  transition: all 0.3s ease-in-out;
+}
+
+.focus-cyan:focus {
+  border-color: #00F2FE !important;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.15) !important;
+  background-color: rgba(0, 242, 254, 0.02) !important;
+}
+
+/* Custom glow utility for selection highlight */
+.shadow-cyan-glow {
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.12);
+}
+
+.shadow-cyan-indicator {
+  box-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
+}
+
+/* Hardware-accelerated fixed full-screen blueprint background container */
+.bg-blueprint {
+  position: fixed;
+  width: calc(100% + 160px);
+  height: calc(100% + 160px);
+  top: -80px;
+  left: -80px;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 80 0 L 0 0 0 80' fill='none' stroke='white' stroke-opacity='0.18' stroke-width='1'/%3E%3Cpath d='M 0 8 L 0 0 L 8 0 M 72 0 L 80 0 L 80 8 M 80 72 L 80 80 L 72 80 M 8 80 L 0 80 L 0 72' fill='none' stroke='white' stroke-opacity='0.32' stroke-width='1'/%3E%3Cline x1='40' y1='0' x2='40' y2='80' stroke='white' stroke-opacity='0.09' stroke-dasharray='2%204'/%3E%3Cline x1='0' y1='40' x2='80' y2='40' stroke='white' stroke-opacity='0.09' stroke-dasharray='2%204'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  animation: blueprint-drift 22s linear infinite;
+  z-index: -10;
+}
+
+@keyframes blueprint-drift {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(80px, 80px, 0); }
+}
+
+.animate-blueprint {
+  animation: blueprint-drift 22s linear infinite;
+}
+
+/* High-Fidelity Apple-Style Glassomorphism Spec with rich deep dark blue tints */
+.glass-capsule {
+  background: rgba(6, 12, 28, 0.15) !important;
+  backdrop-filter: blur(8px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(120%) !important;
+  will-change: backdrop-filter !important;
+  transform: translate3d(0, 0, 0);
+  border: 1px solid rgba(0, 242, 254, 0.15) !important;
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+.glass-card {
+  background: rgba(6, 12, 28, 0.48) !important;
+  backdrop-filter: blur(50px) saturate(220%) !important;
+  -webkit-backdrop-filter: blur(50px) saturate(220%) !important;
+  will-change: backdrop-filter !important;
+  transform: translate3d(0, 0, 0);
+  border: 1px solid rgba(0, 242, 254, 0.12) !important;
+  border-top: 1px solid rgba(0, 242, 254, 0.22) !important;
+  box-shadow: 
+    0 32px 80px 0 rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 40px rgba(0, 242, 254, 0.02) !important;
+}
+
+/* Premium Apple-Style Interactive Components */
+.apple-card-interactive {
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-card-interactive:hover {
+  transform: translateY(-3px) scale(1.008);
+  border-color: rgba(0, 242, 254, 0.35) !important;
+  background-color: rgba(6, 16, 40, 0.65) !important;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.55),
+    0 0 30px rgba(0, 242, 254, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.apple-btn-interactive {
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-btn-interactive:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.15) !important;
+}
+
+.apple-btn-interactive:active {
+  transform: scale(0.97);
+}
+
+/* Monospace high-tech input shake alert animation */
+@keyframes shake-pulse {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.animate-shake {
+  animation: shake-pulse 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* Premium Apple-Style Spring Bounce Animations */
+@keyframes modal-backdrop-in {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+  to {
+    background-color: rgba(3, 5, 10, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+}
+
+@keyframes modal-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-backdrop {
+  animation: modal-backdrop-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: backdrop-filter, background-color;
+}
+
+.animate-modal-card {
+  animation: modal-scale-in 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  will-change: transform, opacity;
+}
+
+
+
+
