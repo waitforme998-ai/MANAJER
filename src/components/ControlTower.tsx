@@ -107,21 +107,32 @@ export default function ControlTower({ isOpen, onClose, authEmail, authName }: C
         </div>
 
         {/* LOGO BANNER WITH GLOW */}
-        <div className="w-full flex justify-center py-4 overflow-hidden relative select-none">
-          {/* Radial glow behind logo */}
+        <div className="w-full flex justify-center items-center py-2 relative select-none" style={{ minHeight: "60px" }}>
+          {/* Tight radial glow behind the actual logo mark — not the full PNG bounds */}
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-16 rounded-full pointer-events-none opacity-30 mix-blend-screen"
+            className="absolute pointer-events-none"
             style={{
-              background: "radial-gradient(circle, rgba(0, 242, 254, 0.20) 0%, rgba(0, 242, 254, 0.05) 50%, transparent 80%)",
-              filter: "blur(18px)",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "160px",
+              height: "44px",
+              background: "radial-gradient(ellipse at center, rgba(0, 242, 254, 0.55) 0%, rgba(0, 242, 254, 0.18) 45%, transparent 75%)",
+              filter: "blur(14px)",
               zIndex: 0,
+              borderRadius: "50%",
             }}
           />
           <img
             src="/logo-banner.png?v=5"
             alt="MANAJER"
-            className="w-[92%] h-auto object-contain block filter drop-shadow-[0_0_25px_rgba(0,242,254,0.4)] transition-transform duration-500 hover:scale-[1.04] relative"
-            style={{ transform: "scale(1.75)", transformOrigin: "center", zIndex: 1 }}
+            className="relative block object-contain hover:opacity-90 transition-opacity duration-300"
+            style={{
+              width: "80%",
+              height: "auto",
+              zIndex: 1,
+              filter: "drop-shadow(0 0 12px rgba(0, 242, 254, 0.35))",
+            }}
             loading="eager"
           />
         </div>

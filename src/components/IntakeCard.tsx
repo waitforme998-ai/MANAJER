@@ -311,35 +311,35 @@ export default function IntakeCard() {
     return true;
   };
 
-  // Reusable majestic Input Class Generator
+  // Reusable Input Class Generator — clean enterprise style
   const getInputClassName = () => {
-    return `w-full max-w-2xl h-12 md:h-14 rounded-lg px-4 md:px-6 font-sans text-sm md:text-base text-white outline-none transition-all duration-300 placeholder-white/20 ${
+    return `w-full max-w-2xl h-12 md:h-14 rounded-xl px-4 md:px-5 font-sans text-sm text-white outline-none transition-all duration-200 placeholder-white/25 ${
       inputError 
-        ? "border-amber-500/50 bg-amber-500/[0.02] shadow-[0_0_20px_rgba(245,158,11,0.20)] animate-shake border"
-        : "bg-[#060C1C]/45 border border-[#00F2FE]/15 focus:border-[#00F2FE]/60 focus:ring-2 focus:ring-[#00F2FE]/20"
+        ? "border-red-500/40 bg-red-500/[0.03] animate-shake border"
+        : "bg-white/[0.04] border border-white/10 focus:border-white/30 focus:bg-white/[0.06]"
     }`;
   };
 
-  // Preset Option Button Class Generator
+  // Preset Option Button — clean enterprise style, selected = white/8 border
   const getPresetClassName = (fieldName: keyof LeadPayload, optionValue: string) => {
     const isSelected = formData[fieldName] === optionValue;
-    return `w-full h-12 px-4 rounded-lg border text-xs font-mono tracking-wider uppercase transition-all duration-300 flex items-center justify-between text-left select-none outline-none apple-btn-interactive ${
+    return `w-full h-11 px-4 rounded-xl border text-[11px] font-medium tracking-wide transition-all duration-200 flex items-center justify-between text-left select-none outline-none ${
       isSelected
-        ? "bg-[#060C1C]/65 border-[#00F2FE]/50 text-[#00F2FE] shadow-[0_0_20px_rgba(0,242,254,0.18)] ring-1 ring-[#00F2FE]/20"
-        : "bg-[#060C1C]/35 border border-[#00F2FE]/15 hover:border-[#00F2FE]/40 text-neutral-400 hover:text-white"
+        ? "bg-white/[0.08] border-white/30 text-white"
+        : "bg-white/[0.02] border border-white/8 hover:border-white/20 hover:bg-white/[0.04] text-white/50 hover:text-white/80"
     }`;
   };
 
   return (
     <div
-      className="w-full max-w-2xl rounded-2xl relative transition-all duration-500 ease-in-out cursor-default p-6 md:p-8 glass-card apple-card-interactive"
+      className="w-full max-w-2xl rounded-2xl relative transition-all duration-500 ease-in-out cursor-default p-6 md:p-8"
       style={{
-        background: "rgba(6, 12, 28, 0.48)",
-        backdropFilter: "blur(50px) saturate(220%)",
-        WebkitBackdropFilter: "blur(50px) saturate(220%)",
-        border: "1px solid rgba(0, 242, 254, 0.12)",
-        borderTop: "1px solid rgba(0, 242, 254, 0.22)",
-        boxShadow: "0 32px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08), 0 0 40px rgba(0, 242, 254, 0.02)",
+        background: "rgba(10, 15, 30, 0.60)",
+        backdropFilter: "blur(40px) saturate(180%)",
+        WebkitBackdropFilter: "blur(40px) saturate(180%)",
+        border: "1px solid rgba(255, 255, 255, 0.08)",
+        borderTop: "1px solid rgba(255, 255, 255, 0.13)",
+        boxShadow: "0 32px 80px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06)",
         overflow: "hidden",
       }}
     >
@@ -362,9 +362,9 @@ export default function IntakeCard() {
       
       {/* PROGRESS BAR — inside card, clipped by overflow:hidden */}
       {step <= 7 && (
-        <div className="absolute top-0 left-0 w-full h-[3px] bg-white/[0.04] z-10">
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-white/[0.04] z-10">
           <div 
-            className="h-full bg-gradient-to-r from-[#00F2FE] via-cyan-400 to-[#00F2FE] shadow-[0_0_15px_rgba(0,242,254,0.5)] transition-all duration-500 ease-in-out"
+            className="h-full bg-white/60 transition-all duration-500 ease-in-out"
             style={{ width: `${progressPercentage}%` }}
           />
         </div>
@@ -444,8 +444,12 @@ export default function IntakeCard() {
                       className={getPresetClassName("category", preset)}
                     >
                       <span>{preset}</span>
-                      <span className={isSelected ? "text-[#00F2FE]" : "text-white/25"}>
-                        {isSelected ? "■" : "□"}
+                      <span className={`text-[10px] flex items-center ${isSelected ? "text-white" : "text-white/20"}`}>
+                        {isSelected ? (
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                        ) : (
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3" /></svg>
+                        )}
                       </span>
                     </button>
                   );
@@ -453,15 +457,19 @@ export default function IntakeCard() {
                 <button
                   type="button"
                   onClick={() => handlePresetSelect("category", "", true)}
-                  className={`w-full h-12 px-4 rounded-lg border text-xs font-mono tracking-wider uppercase transition-all duration-300 flex items-center justify-between text-left select-none outline-none apple-btn-interactive ${
+                  className={`w-full h-11 px-4 rounded-xl border text-[11px] font-medium tracking-wide transition-all duration-200 flex items-center justify-between text-left select-none outline-none ${
                     customCategory
-                      ? "bg-[#060C1C]/65 border-[#00F2FE]/50 text-[#00F2FE] shadow-[0_0_20px_rgba(0,242,254,0.18)] ring-1 ring-[#00F2FE]/20"
-                      : "bg-[#060C1C]/35 border border-[#00F2FE]/15 hover:border-[#00F2FE]/45 text-neutral-400 hover:text-white"
+                      ? "bg-white/[0.08] border-white/30 text-white"
+                      : "bg-white/[0.02] border border-white/8 hover:border-white/20 hover:bg-white/[0.04] text-white/50 hover:text-white/80"
                   }`}
                 >
                   <span>Other / Custom Sector</span>
-                  <span className={customCategory ? "text-[#00F2FE]" : "text-white/25"}>
-                    {customCategory ? "■" : "□"}
+                  <span className={`text-[10px] flex items-center ${customCategory ? "text-white" : "text-white/20"}`}>
+                    {customCategory ? (
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    ) : (
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3" /></svg>
+                    )}
                   </span>
                 </button>
               </div>
@@ -481,9 +489,9 @@ export default function IntakeCard() {
                 <button
                   type="button"
                   onClick={() => handlePresetSelect("category", "", false)}
-                  className="self-start text-[10px] font-mono text-white/40 hover:text-[#00F2FE] uppercase tracking-wider transition-colors py-1.5 focus:outline-none"
+                  className="self-start text-[10px] font-medium text-white/30 hover:text-white/60 tracking-wide transition-colors py-1.5 focus:outline-none"
                 >
-                  ← Back to presets
+                  ← Back to options
                 </button>
               </div>
             )}
@@ -524,8 +532,12 @@ export default function IntakeCard() {
                       className={getPresetClassName("region", preset)}
                     >
                       <span>{preset}</span>
-                      <span className={isSelected ? "text-[#00F2FE]" : "text-white/25"}>
-                        {isSelected ? "■" : "□"}
+                      <span className={`text-[10px] flex items-center ${isSelected ? "text-white" : "text-white/20"}`}>
+                        {isSelected ? (
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                        ) : (
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3" /></svg>
+                        )}
                       </span>
                     </button>
                   );
@@ -533,15 +545,19 @@ export default function IntakeCard() {
                 <button
                   type="button"
                   onClick={() => handlePresetSelect("region", "", true)}
-                  className={`w-full h-12 px-4 rounded-lg border text-xs font-mono tracking-wider uppercase transition-all duration-300 flex items-center justify-between text-left select-none outline-none apple-btn-interactive ${
+                  className={`w-full h-11 px-4 rounded-xl border text-[11px] font-medium tracking-wide transition-all duration-200 flex items-center justify-between text-left select-none outline-none ${
                     customRegion
-                      ? "bg-[#060C1C]/65 border-[#00F2FE]/50 text-[#00F2FE] shadow-[0_0_20px_rgba(0,242,254,0.18)] ring-1 ring-[#00F2FE]/20"
-                      : "bg-[#060C1C]/35 border border-[#00F2FE]/15 hover:border-[#00F2FE]/45 text-neutral-400 hover:text-white"
+                      ? "bg-white/[0.08] border-white/30 text-white"
+                      : "bg-white/[0.02] border border-white/8 hover:border-white/20 hover:bg-white/[0.04] text-white/50 hover:text-white/80"
                   }`}
                 >
                   <span>Other / Custom Region</span>
-                  <span className={customRegion ? "text-[#00F2FE]" : "text-white/25"}>
-                    {customRegion ? "■" : "□"}
+                  <span className={`text-[10px] flex items-center ${customRegion ? "text-white" : "text-white/20"}`}>
+                    {customRegion ? (
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    ) : (
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3" /></svg>
+                    )}
                   </span>
                 </button>
               </div>
@@ -561,9 +577,9 @@ export default function IntakeCard() {
                 <button
                   type="button"
                   onClick={() => handlePresetSelect("region", "", false)}
-                  className="self-start text-[10px] font-mono text-white/40 hover:text-[#00F2FE] uppercase tracking-wider transition-colors py-1.5 focus:outline-none"
+                  className="self-start text-[10px] font-medium text-white/30 hover:text-white/60 tracking-wide transition-colors py-1.5 focus:outline-none"
                 >
-                  ← Back to presets
+                  ← Back to options
                 </button>
               </div>
             )}
@@ -604,8 +620,12 @@ export default function IntakeCard() {
                       className={getPresetClassName("current_system", preset)}
                     >
                       <span>{preset}</span>
-                      <span className={isSelected ? "text-[#00F2FE]" : "text-white/25"}>
-                        {isSelected ? "■" : "□"}
+                      <span className={`text-[10px] flex items-center ${isSelected ? "text-white" : "text-white/20"}`}>
+                        {isSelected ? (
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                        ) : (
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3" /></svg>
+                        )}
                       </span>
                     </button>
                   );
@@ -613,15 +633,19 @@ export default function IntakeCard() {
                 <button
                   type="button"
                   onClick={() => handlePresetSelect("current_system", "", true)}
-                  className={`w-full h-12 px-4 rounded-lg border text-xs font-mono tracking-wider uppercase transition-all duration-300 flex items-center justify-between text-left select-none outline-none apple-btn-interactive ${
+                  className={`w-full h-11 px-4 rounded-xl border text-[11px] font-medium tracking-wide transition-all duration-200 flex items-center justify-between text-left select-none outline-none ${
                     customSystem
-                      ? "bg-[#060C1C]/65 border-[#00F2FE]/50 text-[#00F2FE] shadow-[0_0_20px_rgba(0,242,254,0.18)] ring-1 ring-[#00F2FE]/20"
-                      : "bg-[#060C1C]/35 border border-[#00F2FE]/15 hover:border-[#00F2FE]/45 text-neutral-400 hover:text-white"
+                      ? "bg-white/[0.08] border-white/30 text-white"
+                      : "bg-white/[0.02] border border-white/8 hover:border-white/20 hover:bg-white/[0.04] text-white/50 hover:text-white/80"
                   }`}
                 >
                   <span>Other / Custom Software</span>
-                  <span className={customSystem ? "text-[#00F2FE]" : "text-white/25"}>
-                    {customSystem ? "■" : "□"}
+                  <span className={`text-[10px] flex items-center ${customSystem ? "text-white" : "text-white/20"}`}>
+                    {customSystem ? (
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    ) : (
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3" /></svg>
+                    )}
                   </span>
                 </button>
               </div>
@@ -641,9 +665,9 @@ export default function IntakeCard() {
                 <button
                   type="button"
                   onClick={() => handlePresetSelect("current_system", "", false)}
-                  className="self-start text-[10px] font-mono text-white/40 hover:text-[#00F2FE] uppercase tracking-wider transition-colors py-1.5 focus:outline-none"
+                  className="self-start text-[10px] font-medium text-white/30 hover:text-white/60 tracking-wide transition-colors py-1.5 focus:outline-none"
                 >
-                  ← Back to presets
+                  ← Back to options
                 </button>
               </div>
             )}
@@ -683,8 +707,12 @@ export default function IntakeCard() {
                     className={getPresetClassName("monthly_volume", preset)}
                   >
                     <span>{preset}</span>
-                    <span className={isSelected ? "text-[#00F2FE]" : "text-white/25"}>
-                      {isSelected ? "■" : "□"}
+                    <span className={`text-[10px] flex items-center ${isSelected ? "text-white" : "text-white/20"}`}>
+                      {isSelected ? (
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      ) : (
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3" /></svg>
+                      )}
                     </span>
                   </button>
                 );
@@ -716,15 +744,15 @@ export default function IntakeCard() {
             </div>
 
             <input 
-              type="text" 
+              type="tel" 
               name="whatsapp_num"
               value={formData.whatsapp_num}
               onChange={handleInputChange}
               onKeyDown={(e) => { if (e.key === "Enter") nextStep(); }}
               className={getInputClassName()}
-              placeholder="e.g., +92 300 1234567, +1 555 0199..."
+              placeholder="e.g., +92 300 1234567 · +1 555 0199 · +44 7911 123456"
               autoFocus
-              autoComplete="off"
+              autoComplete="tel"
             />
           </div>
         )}
@@ -832,41 +860,41 @@ export default function IntakeCard() {
 
         {/* Action Controls */}
         {step <= 7 && (
-          <div className="grid grid-cols-2 gap-3 mt-8 border-t border-white/5 pt-6 w-full">
+          <div className="grid grid-cols-2 gap-2.5 mt-8 border-t border-white/[0.06] pt-5 w-full">
             <button 
               type="button"
               onClick={prevStep}
               disabled={step === 1 || status === "SUBMITTING"}
-              className={`h-9 px-4 rounded-lg text-xs font-bold tracking-wider uppercase transition-all duration-300 font-mono flex items-center justify-center gap-1.5 border border-[#00F2FE]/15 bg-[#060C1C]/45 hover:bg-[#00F2FE]/10 hover:border-[#00F2FE]/45 text-neutral-300 hover:text-white apple-btn-interactive ${
+              className={`h-10 px-3 rounded-xl text-[11px] font-semibold whitespace-nowrap transition-all duration-200 flex items-center justify-center gap-1.5 border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/20 text-white/50 hover:text-white/90 ${
                 step === 1 
                   ? "opacity-0 pointer-events-none" 
                   : "disabled:opacity-20 disabled:pointer-events-none"
               }`}
             >
-              ← Prev Phase
+              ← Back
             </button>
             
             {step < 7 ? (
               <button 
                 type="button"
                 onClick={nextStep}
-                className="h-9 bg-gradient-to-r from-[#00F2FE] to-[#00C5FE] text-black hover:opacity-90 border border-transparent px-4 rounded-lg text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-[0_4px_20px_rgba(0,242,254,0.22)] flex items-center justify-center apple-btn-interactive"
+                className="h-10 bg-white hover:bg-white/90 active:bg-white/80 text-[#040712] px-3 rounded-xl text-[11px] font-bold whitespace-nowrap transition-all duration-200 flex items-center justify-center gap-1.5"
               >
-                Next Phase →
+                Continue →
               </button>
             ) : (
               <button 
                 type="submit"
                 onClick={submitApplication}
                 disabled={status === "SUBMITTING"}
-                className="h-9 bg-gradient-to-r from-[#00F2FE] to-[#00C5FE] text-black hover:opacity-90 disabled:bg-neutral-800 disabled:text-white/20 disabled:border-white/5 border border-transparent px-4 rounded-lg text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-[0_4px_25px_rgba(0,242,254,0.3)] disabled:shadow-none disabled:cursor-not-allowed flex items-center justify-center gap-2 apple-btn-interactive"
+                className="h-10 bg-white hover:bg-white/90 active:bg-white/80 text-[#040712] disabled:bg-white/20 disabled:text-white/30 px-3 rounded-xl text-[11px] font-bold whitespace-nowrap transition-all duration-200 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {status === "SUBMITTING" ? (
                   <>
-                    <div className="w-3.5 h-3.5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                    <div className="w-3.5 h-3.5 border-[1.5px] border-black/20 border-t-black/60 rounded-full animate-spin" />
                     Submitting...
                   </>
-                ) : "Submit"}
+                ) : "Submit Application"}
               </button>
             )}
           </div>
