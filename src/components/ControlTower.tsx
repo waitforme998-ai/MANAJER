@@ -107,18 +107,20 @@ export default function ControlTower({ isOpen, onClose, authEmail, authName }: C
         </div>
 
         {/* LOGO BANNER WITH GLOW */}
-        <div className="w-full flex justify-center items-center py-2 relative select-none" style={{ minHeight: "60px" }}>
-          {/* Tight radial glow behind the actual logo mark — not the full PNG bounds */}
+        <div
+          className="w-full flex justify-center items-center relative select-none py-3"
+        >
+          {/* Glow behind logo mark */}
           <div
             className="absolute pointer-events-none"
             style={{
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              width: "160px",
-              height: "44px",
-              background: "radial-gradient(ellipse at center, rgba(0, 242, 254, 0.55) 0%, rgba(0, 242, 254, 0.18) 45%, transparent 75%)",
-              filter: "blur(14px)",
+              width: "200px",
+              height: "52px",
+              background: "radial-gradient(ellipse at center, rgba(0, 242, 254, 0.45) 0%, rgba(0, 242, 254, 0.12) 50%, transparent 75%)",
+              filter: "blur(16px)",
               zIndex: 0,
               borderRadius: "50%",
             }}
@@ -126,16 +128,21 @@ export default function ControlTower({ isOpen, onClose, authEmail, authName }: C
           <img
             src="/logo-banner.png?v=5"
             alt="MANAJER"
-            className="relative block object-contain hover:opacity-90 transition-opacity duration-300"
+            className="relative block transition-opacity duration-300 hover:opacity-90"
             style={{
-              width: "80%",
+              width: "90%",
               height: "auto",
+              transform: "scale(1.9)",
+              transformOrigin: "center center",
               zIndex: 1,
-              filter: "drop-shadow(0 0 12px rgba(0, 242, 254, 0.35))",
+              filter: "drop-shadow(0 0 14px rgba(0, 242, 254, 0.40))",
+              maskImage: "radial-gradient(ellipse 80% 80% at center, black 55%, transparent 100%)",
+              WebkitMaskImage: "radial-gradient(ellipse 80% 80% at center, black 55%, transparent 100%)",
             }}
             loading="eager"
           />
         </div>
+
       </div>
 
       {/* ── ACCORDION STACK ── */}

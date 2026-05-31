@@ -362,10 +362,13 @@ export default function IntakeCard() {
       
       {/* PROGRESS BAR — inside card, clipped by overflow:hidden */}
       {step <= 7 && (
-        <div className="absolute top-0 left-0 w-full h-[2px] bg-white/[0.04] z-10">
+        <div className="absolute top-0 left-0 w-full h-[3px] bg-white/[0.06] z-10">
           <div 
-            className="h-full bg-white/60 transition-all duration-500 ease-in-out"
-            style={{ width: `${progressPercentage}%` }}
+            className="h-full bg-white transition-all duration-500 ease-in-out"
+            style={{ 
+              width: `${progressPercentage}%`,
+              boxShadow: "0 0 8px rgba(255,255,255,0.6), 0 0 2px rgba(255,255,255,0.9)"
+            }}
           />
         </div>
       )}
@@ -388,7 +391,7 @@ export default function IntakeCard() {
               <button
                 type="button"
                 onClick={() => setShowHelp(!showHelp)}
-                className="w-12 h-12 md:w-10 md:h-10 rounded-full border flex items-center justify-center text-xs font-mono transition-all duration-300 cursor-pointer shrink-0 focus:outline-none bg-[#060C1C]/45 border-[#00F2FE]/20 text-[#00F2FE] hover:text-white hover:border-[#00F2FE]/50 hover:bg-[#00F2FE]/10 apple-btn-interactive"
+                className="w-9 h-9 rounded-full border flex items-center justify-center text-xs font-semibold transition-all duration-200 cursor-pointer shrink-0 focus:outline-none bg-white/[0.04] border-white/12 text-white/40 hover:text-white/80 hover:border-white/25 hover:bg-white/[0.08] active:scale-95"
                 aria-label="Toggle Technical Onboarding Help"
                 title="System Onboarding Telemetry Guide"
               >
@@ -425,7 +428,7 @@ export default function IntakeCard() {
               <button
                 type="button"
                 onClick={() => setShowHelp(!showHelp)}
-                className="w-12 h-12 md:w-10 md:h-10 rounded-full border flex items-center justify-center text-xs font-mono transition-all duration-300 cursor-pointer shrink-0 focus:outline-none bg-white/10 border-white/20 text-white/60 hover:text-white hover:border-white/35 focus:border-white"
+                className="w-9 h-9 rounded-full border flex items-center justify-center text-xs font-semibold transition-all duration-200 cursor-pointer shrink-0 focus:outline-none bg-white/[0.04] border-white/12 text-white/40 hover:text-white/80 hover:border-white/25 hover:bg-white/[0.08] active:scale-95"
                 aria-label="Toggle Technical Onboarding Help"
               >
                 ?
@@ -513,7 +516,7 @@ export default function IntakeCard() {
               <button
                 type="button"
                 onClick={() => setShowHelp(!showHelp)}
-                className="w-12 h-12 md:w-10 md:h-10 rounded-full border flex items-center justify-center text-xs font-mono transition-all duration-300 cursor-pointer shrink-0 focus:outline-none bg-white/10 border-white/20 text-white/60 hover:text-white hover:border-white/35 focus:border-white"
+                className="w-9 h-9 rounded-full border flex items-center justify-center text-xs font-semibold transition-all duration-200 cursor-pointer shrink-0 focus:outline-none bg-white/[0.04] border-white/12 text-white/40 hover:text-white/80 hover:border-white/25 hover:bg-white/[0.08] active:scale-95"
                 aria-label="Toggle Technical Onboarding Help"
               >
                 ?
@@ -601,7 +604,7 @@ export default function IntakeCard() {
               <button
                 type="button"
                 onClick={() => setShowHelp(!showHelp)}
-                className="w-12 h-12 md:w-10 md:h-10 rounded-full border flex items-center justify-center text-xs font-mono transition-all duration-300 cursor-pointer shrink-0 focus:outline-none bg-white/10 border-white/20 text-white/60 hover:text-white hover:border-white/35 focus:border-white"
+                className="w-9 h-9 rounded-full border flex items-center justify-center text-xs font-semibold transition-all duration-200 cursor-pointer shrink-0 focus:outline-none bg-white/[0.04] border-white/12 text-white/40 hover:text-white/80 hover:border-white/25 hover:bg-white/[0.08] active:scale-95"
                 aria-label="Toggle Technical Onboarding Help"
               >
                 ?
@@ -689,7 +692,7 @@ export default function IntakeCard() {
               <button
                 type="button"
                 onClick={() => setShowHelp(!showHelp)}
-                className="w-12 h-12 md:w-10 md:h-10 rounded-full border flex items-center justify-center text-xs font-mono transition-all duration-300 cursor-pointer shrink-0 focus:outline-none bg-white/10 border-white/20 text-white/60 hover:text-white hover:border-white/35 focus:border-white"
+                className="w-9 h-9 rounded-full border flex items-center justify-center text-xs font-semibold transition-all duration-200 cursor-pointer shrink-0 focus:outline-none bg-white/[0.04] border-white/12 text-white/40 hover:text-white/80 hover:border-white/25 hover:bg-white/[0.08] active:scale-95"
                 aria-label="Toggle Technical Onboarding Help"
               >
                 ?
@@ -736,7 +739,7 @@ export default function IntakeCard() {
               <button
                 type="button"
                 onClick={() => setShowHelp(!showHelp)}
-                className="w-12 h-12 md:w-10 md:h-10 rounded-full border flex items-center justify-center text-xs font-mono transition-all duration-300 cursor-pointer shrink-0 focus:outline-none bg-white/10 border-white/20 text-white/60 hover:text-white hover:border-white/35 focus:border-white"
+                className="w-9 h-9 rounded-full border flex items-center justify-center text-xs font-semibold transition-all duration-200 cursor-pointer shrink-0 focus:outline-none bg-white/[0.04] border-white/12 text-white/40 hover:text-white/80 hover:border-white/25 hover:bg-white/[0.08] active:scale-95"
                 aria-label="Toggle Technical Onboarding Help"
               >
                 ?
@@ -772,7 +775,7 @@ export default function IntakeCard() {
               <button
                 type="button"
                 onClick={() => setShowHelp(!showHelp)}
-                className="w-12 h-12 md:w-10 md:h-10 rounded-full border flex items-center justify-center text-xs font-mono transition-all duration-300 cursor-pointer shrink-0 focus:outline-none bg-white/10 border-white/20 text-white/60 hover:text-white hover:border-white/35 focus:border-white"
+                className="w-9 h-9 rounded-full border flex items-center justify-center text-xs font-semibold transition-all duration-200 cursor-pointer shrink-0 focus:outline-none bg-white/[0.04] border-white/12 text-white/40 hover:text-white/80 hover:border-white/25 hover:bg-white/[0.08] active:scale-95"
                 aria-label="Toggle Technical Onboarding Help"
               >
                 ?
@@ -860,41 +863,52 @@ export default function IntakeCard() {
 
         {/* Action Controls */}
         {step <= 7 && (
-          <div className="grid grid-cols-2 gap-2.5 mt-8 border-t border-white/[0.06] pt-5 w-full">
+          <div className="grid grid-cols-2 gap-3 mt-7 border-t border-white/[0.06] pt-5 w-full">
             <button 
               type="button"
               onClick={prevStep}
               disabled={step === 1 || status === "SUBMITTING"}
-              className={`h-10 px-3 rounded-xl text-[11px] font-semibold whitespace-nowrap transition-all duration-200 flex items-center justify-center gap-1.5 border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/20 text-white/50 hover:text-white/90 ${
+              className={`h-[52px] px-5 rounded-[14px] text-[13px] font-semibold whitespace-nowrap transition-all duration-300 ease-out flex items-center justify-center gap-2 border border-white/10 bg-white/[0.04] hover:bg-white/[0.09] hover:border-white/22 active:scale-[0.97] active:bg-white/[0.06] text-white/55 hover:text-white/90 ${
                 step === 1 
                   ? "opacity-0 pointer-events-none" 
                   : "disabled:opacity-20 disabled:pointer-events-none"
               }`}
             >
-              ← Back
+              <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+              Back
             </button>
             
             {step < 7 ? (
               <button 
                 type="button"
                 onClick={nextStep}
-                className="h-10 bg-white hover:bg-white/90 active:bg-white/80 text-[#040712] px-3 rounded-xl text-[11px] font-bold whitespace-nowrap transition-all duration-200 flex items-center justify-center gap-1.5"
+                className="h-[52px] bg-white hover:bg-white/93 active:bg-white/85 active:scale-[0.97] text-[#040712] px-5 rounded-[14px] text-[13px] font-semibold whitespace-nowrap transition-all duration-300 ease-out flex items-center justify-center gap-2 shadow-[0_2px_12px_rgba(255,255,255,0.12)]"
               >
-                Continue →
+                Continue
+                <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
               </button>
             ) : (
               <button 
                 type="submit"
                 onClick={submitApplication}
                 disabled={status === "SUBMITTING"}
-                className="h-10 bg-white hover:bg-white/90 active:bg-white/80 text-[#040712] disabled:bg-white/20 disabled:text-white/30 px-3 rounded-xl text-[11px] font-bold whitespace-nowrap transition-all duration-200 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="h-[52px] bg-white hover:bg-white/93 active:bg-white/85 active:scale-[0.97] text-[#040712] disabled:bg-white/15 disabled:text-white/25 px-5 rounded-[14px] text-[13px] font-semibold whitespace-nowrap transition-all duration-300 ease-out disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-[0_2px_12px_rgba(255,255,255,0.12)] disabled:shadow-none"
               >
                 {status === "SUBMITTING" ? (
                   <>
-                    <div className="w-3.5 h-3.5 border-[1.5px] border-black/20 border-t-black/60 rounded-full animate-spin" />
+                    <div className="w-4 h-4 border-[1.5px] border-[#040712]/20 border-t-[#040712]/70 rounded-full animate-spin shrink-0" />
                     Submitting...
                   </>
-                ) : "Submit Application"}
+                ) : (
+                  <>
+                    Submit
+                    <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                  </>
+                )}
               </button>
             )}
           </div>
